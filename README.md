@@ -1,2 +1,2 @@
 # PowerShell
-Repository for PowerShell Scrips
+Repository for PowerShell Scripts
