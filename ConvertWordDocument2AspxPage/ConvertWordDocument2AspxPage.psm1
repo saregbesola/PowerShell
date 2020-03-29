@@ -1,4 +1,38 @@
-function ConvertWordDocument2AspxPage{
+<#
+ .Synopsis
+  Convert word documents to SharePoint aspx pages.
+
+ .Description
+  Convert word documents to SharePoint aspx pages. This function let you convert multiple word documents to web pages with a single line of command.
+
+ .Parameter SiteUrl
+  Site url.
+
+ .Parameter TargetLibrary
+  Library where documents to convert are stored.
+
+ .Parameter Email
+  Email address that can receive notification about the status of the convert operation.
+
+ .Parameter UserName
+  Username of a user who have full control access to the site and the library.
+  This is used for authentication.
+
+ .Parameter Password
+  Password of the user who have acess to the site and the library.
+
+ .Example
+   # Import module.
+   Import-Module ConvertWordDocument2AspxPage 
+
+ .Example
+   # Convert word to web pages.
+  ConvertWordDocument2AspxPage -SiteUrl "https://domain.sharepoint.com/sites/dev" -TargetLibrary "SourceLibrary" -Email "UserName@domain.com" -UserName "UserName@domain.com" -Password "UserPassword"
+
+ 
+#>
+
+Function ConvertWordDocument2AspxPage{
 param(
     [string] $SiteUrl ,
     [string] $TargetLibrary,   
