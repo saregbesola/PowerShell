@@ -1,7 +1,10 @@
 <#
  .Synopsis
   Convert word documents to SharePoint aspx pages.
-
+  
+ .Author
+  Aregbesola Sunday.
+  
  .Description
   Convert word documents to SharePoint aspx pages. This function let you convert multiple word documents to web pages with a single line of command.
 
