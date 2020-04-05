@@ -54,7 +54,7 @@ Add-Type -Path "C:\Program Files\WindowsPowerShell\Modules\ConvertWordDocument2A
 
 
 $asset=("windowsbase, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-"DocumentFormat.OpenXml, Version=2.7.2.0, Culture=neutral, PublicKeyToken=8fb06cb64d019a17",
+"C:\Program Files\WindowsPowerShell\Modules\ConvertWordDocument2AspxPage\1.0.0.0\DocumentFormat.OpenXml.dll",
 "C:\Program Files\WindowsPowerShell\Modules\ConvertWordDocument2AspxPage\1.0.0.0\Microsoft.SharePoint.Client.dll",
 "C:\Program Files\WindowsPowerShell\Modules\ConvertWordDocument2AspxPage\1.0.0.0\Microsoft.SharePoint.Client.Runtime.dll",
 "C:\Program Files\WindowsPowerShell\Modules\ConvertWordDocument2AspxPage\1.0.0.0\OfficeDevPnP.Core.dll",
