@@ -1,56 +1,57 @@
 <#
  .Synopsis
-  Convert word documents to SharePoint aspx pages.
+  Convert word documents to SharePoint modern pages.
   
  .Description
-  Convert word documents to SharePoint aspx pages. This function let you convert multiple word documents to web pages with a single line of command.
+  Convert word documents to SharePoint modern pages. This function let you convert a single or multiple word documents to web pages with a single line of command.
 
  .Parameter SiteUrl
   Site url.
 
  .Parameter TargetLibrary
-  Library where documents to convert are stored.
-
- .Parameter Email
-  Email address that can receive notification about the status of the convert operation.
+  Library where documents to convert are located.
 
  .Parameter UserName
   Username of a user who have full control access to the site and the library.
   This is used for authentication.
 
  .Parameter Password
-  Password of the user who have acess to the site and the library.
+  Password of the user who has acess to the site and the library.
+
+  .Optional Parameter FileName
+  In case of single document, File name with extension to convert. If not specified, all word documents in the library will be converted.
 
  .Example
    # Import module.
-   Import-Module ConvertWordDocument2AspxPage 
+   Import-Module ConvertWordDocumentToModernPage 
 
  .Example
    # Convert word to web pages.
-  ConvertWordDocument2AspxPage -SiteUrl "https://domain.sharepoint.com/sites/dev" -TargetLibrary "SourceLibrary" -Email "UserName@domain.com" -UserName "UserName@domain.com" -Password "UserPassword"
+  ConvertWordDocumentToModernPage -SiteUrl "https://domain.sharepoint.com/sites/dev" -TargetLibrary "SourceLibrary" -UserName "UserName@domain.com" -Password "UserPassword" -FileName "ConvertWord.docx"
 
  
 #>
 #.......................................
-# Author: Aregbesola Sunday
+# Author: James Aregbesola
 #.......................................
   
 
-Function ConvertWordDocument2AspxPage{
+Function ConvertWordDocumentToModernPage{
 param(
-    [string] $SiteUrl ,
-    [string] $TargetLibrary,   
-    [string] $Email,
-    [string] $UserName,
-    [string] $Password
+
+[Parameter(Mandatory,HelpMessage='Site URL')][string] $SiteUrl ,
+[Parameter(Mandatory,HelpMessage='Library containing the documents to convert')][string] $TargetLibrary,
+[Parameter(Mandatory,HelpMessage='Specify an account with admin right to the target library')][string] $UserName,
+[Parameter(Mandatory,HelpMessage='Admin password')][string] $Password,
+[Parameter(HelpMessage='Optional: Enter a document name to convert e.g. convert.docx')][string] $FileName
   
     )
 
 Add-Type -Path "C:\Program Files\WindowsPowerShell\Modules\ConvertWordDocument2AspxPage\1.0.0.0\DocumentFormat.OpenXml.dll";
-Add-Type -Path "C:\Program Files\WindowsPowerShell\Modules\ConvertWordDocument2AspxPage\1.0.0.0\OfficeDevPnP.Core.dll"
-Add-Type -Path "C:\Program Files\WindowsPowerShell\Modules\ConvertWordDocument2AspxPage\1.0.0.0\OpenXmlPowerTools.dll"
-Add-Type -Path "C:\Program Files\WindowsPowerShell\Modules\ConvertWordDocument2AspxPage\1.0.0.0\Newtonsoft.Json.dll"
-Add-Type -Path "C:\Program Files\WindowsPowerShell\Modules\ConvertWordDocument2AspxPage\1.0.0.0\AngleSharp.dll"
+Add-Type -Path "C:\Program Files\WindowsPowerShell\Modules\ConvertWordDocument2AspxPage\1.0.0.0\OfficeDevPnP.Core.dll";
+Add-Type -Path "C:\Program Files\WindowsPowerShell\Modules\ConvertWordDocument2AspxPage\1.0.0.0\OpenXmlPowerTools.dll";
+Add-Type -Path "C:\Program Files\WindowsPowerShell\Modules\ConvertWordDocument2AspxPage\1.0.0.0\Newtonsoft.Json.dll";
+Add-Type -Path "C:\Program Files\WindowsPowerShell\Modules\ConvertWordDocument2AspxPage\1.0.0.0\AngleSharp.dll";
 
 
 $asset=("windowsbase, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
@@ -87,23 +88,15 @@ using System.Net.Mail;
 using DocumentFormat.OpenXml.Packaging;
 using DocumentFormat.OpenXml.Wordprocessing;
 
- public class WordConvertWordDocument2AspxPage
+ public class ConvertWordDocument2AspxPage
     {
-      
-        public static Task <string> ConvertWord2PageAsync(string SiteUrl, string SourceLibrary, string UserEmail,string UserName, string Password)
+    
+        public static string ConvertDocument(string SiteUrl, string SourceLibrary,  string UserName, string Password, string FileName="")
         {
-          
-            return Task.Run(() =>
-                {
-                    var docConversion=ConvertPolicyDocument(SiteUrl, SourceLibrary, UserEmail, UserName, Password);
-                    return docConversion;
-                });
-               
-        }
-        private static string ConvertPolicyDocument(string SiteUrl, string SourceLibrary, string UserEmail,  string UserName, string Password)
-        {
+          string completionMsgBody = "The following pages were successfully created: <br/>";
            string userName = UserName;
             string password =Password;
+            string UserEmail=UserName;
             try
             {
                
@@ -118,7 +111,7 @@ using DocumentFormat.OpenXml.Wordprocessing;
 
 
                 using (var cc = am.GetSharePointOnlineAuthenticatedContextTenant(SiteUrl, userName, securePassword))
-                {       string[] filesToMerge = GetFilePath(cc, SourceLibrary);
+                {       string[] filesToMerge = GetFilePath(cc, SourceLibrary, FileName);
                   for (int i = 0; i < filesToMerge.Length; i++)
                     {
                         FileInformation fileInformation =
@@ -270,24 +263,39 @@ using DocumentFormat.OpenXml.Wordprocessing;
                         page.Publish();
 
                     }
-                    SendEmails(UserEmail, destFileName+" Page successfully created.",destFileName+" page has been successfully created. You can find it in the Site Pages library at the destination site." , userName, password);
+                    
+                       completionMsgBody += destFileName +"<br/>";
+                    //SendEmails(UserEmail, destFileName+" Page successfully created.",destFileName+" page has been successfully created. You can find it in the Site Pages library at the destination site." , userName, password);
                   }
                 }
-                 
-                return "Document conversion operation successfully completed.";
+                 SendEmails(UserEmail, "Word documents to web pages conversion", completionMsgBody, userName, password);
+                return "Operation completed successfully.Please check your email for a complete list of pages created.If you do not receive email you may need to enable authenticated client SMTP in your tenant or for your mailbox. For more info, see: https://aka.ms/smtp_auth_disabled.";
             }
             catch(Exception ex)
             {
 
-                SendEmails(UserEmail, "Policy page failed to create", ex.ToString(), userName, password);
+                SendEmails(UserEmail, "Page failed to create", ex.ToString(), userName, password);
                 return ex.ToString();
             }
         }
-        private static string[] GetFilePath(ClientContext cc, string sourceLibrary)
+        private static string[] GetFilePath(ClientContext cc, string sourceLibrary,string documentName = "")
         {
             List<string> buildFilePath = new List<string>();
             CamlQuery query = new CamlQuery();
+             if (documentName != "") { 
             query.ViewXml = @"<View Scope='Recursive'>
+                <Query>
+                  <Where>
+                    <Eq>
+                      <FieldRef Name='FileLeafRef'/><Value Type='Text'>"+ documentName + @"</Value>
+                    </Eq>
+                  </Where> 
+                 </Query>
+              </View>";
+            }
+            else
+            {
+                query.ViewXml = @"<View Scope='Recursive'>
                 <Query>
                   <Where>
                     <Eq>
@@ -296,6 +304,7 @@ using DocumentFormat.OpenXml.Wordprocessing;
                   </Where> 
                  </Query>
               </View>";
+            }
             var web = cc.Web;
             List list = cc.Web.Lists.GetByTitle(sourceLibrary);
             ListItemCollection files = list.GetItems(query);
@@ -352,7 +361,7 @@ using DocumentFormat.OpenXml.Wordprocessing;
                     try { smtp.Send(message); }
                     catch (Exception excp)
                     {
-                        Console.Write(excp.Message);
+                       Console.Write(excp.Message);
                      
                     }
                 }
@@ -366,8 +375,8 @@ using DocumentFormat.OpenXml.Wordprocessing;
 
  Add-Type -ReferencedAssemblies $asset -TypeDefinition $src
  
- [WordConvertWordDocument2AspxPage]::ConvertWord2PageAsync($SiteUrl,$TargetLibrary,$Email,$UserName,$Password)
+ [ConvertWordDocument2AspxPage]::ConvertDocument($SiteUrl,$TargetLibrary,$UserName,$Password,$FileName)
 
  }
 
- Export-ModuleMember -Function ConvertWordDocument2AspxPage
+ Export-ModuleMember -Function ConvertWordDocumentToModernPage
