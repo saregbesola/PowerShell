@@ -1,5 +1,5 @@
 
-#Import module
+# Import module
 To get started, download or clone the project file. If you download it as a zip file, unzip it and copy the folder named ConvertWordDocumentToModernPage along with its content to Modules folder inside WindowsPowerShell directory in Program Files i.e. C:\Program Files\WindowsPowerShell\Modules.  Then follow the steps below to import the module and run the command.
 
 1. Open PowerShell ISE or PowerShell command window 
