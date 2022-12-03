@@ -268,7 +268,7 @@ using DocumentFormat.OpenXml.Wordprocessing;
                     //SendEmails(UserEmail, destFileName+" Page successfully created.",destFileName+" page has been successfully created. You can find it in the Site Pages library at the destination site." , userName, password);
                   }
                 }
-                 SendEmails(UserEmail, "Word documents to web pages conversion", completionMsgBody, userName, password);
+                 SendEmails(UserEmail, "Word documents to modern pages conversion", completionMsgBody, userName, password);
                 return "Operation completed successfully.Please check your email for a complete list of pages created.If you do not receive email you may need to enable authenticated client SMTP in your tenant or for your mailbox. For more info, see: https://aka.ms/smtp_auth_disabled.";
             }
             catch(Exception ex)
