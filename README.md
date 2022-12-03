@@ -18,7 +18,12 @@ TargetLibrary - Library where the documents are stored
 UserName - Username or email address of a user who has full control on the site and the library. This is used for authentication and accessing the files.
 
 Password - Password of the account used for authentication.
+FieName - Optional: specify a filename for a word document to convert. If you do not use FileName parameter all word documents in the library will be converted. 
 
+# Example
+  To convert a single word document: onvertWordDocumentToModernPage -SiteUrl "https://domain.sharepoint.com/sites/dev" -TargetLibrary "SourceLibrary" -UserName "UserName@domain.com" -Password "UserPassword" -FileName "ConvertWord.docx"
+  To convert all word documents in a library:  ConvertWordDocumentToModernPage -SiteUrl "https://domain.sharepoint.com/sites/dev" -TargetLibrary "SourceLibrary" -UserName "UserName@domain.com" -Password "UserPassword"
+  
 Note: if you don't have access to Program Files. Copy the folder i.e. ConvertWordDocumentToModernPage  to any location of your choice. Then navigate to inside of the folder, and open the ConvertWordDocumentToModernPage.psm1 file. Change path of the dlls files to the location where you have copied the folder. 
 
 Open PowerShell command and change the directory to where you have the ConvertWordDocument2AspxPage  and import the module using the command below:
