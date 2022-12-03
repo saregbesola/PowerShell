@@ -2,42 +2,6 @@ To get started, download or clone the project file. If you download it as a zip 
 
 1. Open PowerShell ISE or PowerShell command window 
 2. Copy and paste the command below:
-<#
- .Synopsis
-  Convert word documents to SharePoint modern pages.
-  
- .Description
-  Convert word documents to SharePoint modern pages. This function let you convert a single or multiple word documents to web pages with a single line of command.
-
- .Parameter SiteUrl
-  Site url.
-
- .Parameter TargetLibrary
-  Library where documents to convert are located.
-
- .Parameter UserName
-  Username of a user who have full control access to the site and the library.
-  This is used for authentication.
-
- .Parameter Password
-  Password of the user who has acess to the site and the library.
-
-  .Optional Parameter FileName
-  In case of single document, File name with extension to convert. If not specified, all word documents in the library will be converted.
-
- .Example
-   # Import module.
-   Import-Module ConvertWordDocumentToModernPage 
-
- .Example
-   # Convert word to web pages.
-  ConvertWordDocumentToModernPage -SiteUrl "https://domain.sharepoint.com/sites/dev" -TargetLibrary "SourceLibrary" -UserName "UserName@domain.com" -Password "UserPassword" -FileName "ConvertWord.docx"
-
- 
-#>
-#.......................................
-# Author: James Aregbesola
-#.......................................
 
    Import-Module ConvertWordDocumentToModernPage 
    
