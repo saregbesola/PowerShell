@@ -18,6 +18,7 @@ TargetLibrary - Library where the documents are stored
 UserName - Username or email address of a user who has full control on the site and the library. This is used for authentication and accessing the files.
 
 Password - Password of the account used for authentication.
+
 FieName - Optional: specify a filename for a word document to convert. If you do not use FileName parameter all word documents in the library will be converted. 
 
 # Example
