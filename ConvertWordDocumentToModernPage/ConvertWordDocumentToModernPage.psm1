@@ -47,24 +47,24 @@ param(
   
     )
 
-Add-Type -Path "C:\Program Files\WindowsPowerShell\Modules\ConvertWordDocument2AspxPage\1.0.0.0\DocumentFormat.OpenXml.dll";
-Add-Type -Path "C:\Program Files\WindowsPowerShell\Modules\ConvertWordDocument2AspxPage\1.0.0.0\OfficeDevPnP.Core.dll";
-Add-Type -Path "C:\Program Files\WindowsPowerShell\Modules\ConvertWordDocument2AspxPage\1.0.0.0\OpenXmlPowerTools.dll";
-Add-Type -Path "C:\Program Files\WindowsPowerShell\Modules\ConvertWordDocument2AspxPage\1.0.0.0\Newtonsoft.Json.dll";
-Add-Type -Path "C:\Program Files\WindowsPowerShell\Modules\ConvertWordDocument2AspxPage\1.0.0.0\AngleSharp.dll";
+Add-Type -Path "C:\Program Files\WindowsPowerShell\Modules\ConvertWordDocumentToModernPage\1.0.0.0\DocumentFormat.OpenXml.dll";
+Add-Type -Path "C:\Program Files\WindowsPowerShell\Modules\ConvertWordDocumentToModernPage\1.0.0.0\OfficeDevPnP.Core.dll";
+Add-Type -Path "C:\Program Files\WindowsPowerShell\Modules\ConvertWordDocumentToModernPage\1.0.0.0\OpenXmlPowerTools.dll";
+Add-Type -Path "C:\Program Files\WindowsPowerShell\Modules\ConvertWordDocumentToModernPage\1.0.0.0\Newtonsoft.Json.dll";
+Add-Type -Path "C:\Program Files\WindowsPowerShell\Modules\ConvertWordDocumentToModernPage\1.0.0.0\AngleSharp.dll";
 
 
 $asset=("windowsbase, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-"C:\Program Files\WindowsPowerShell\Modules\ConvertWordDocument2AspxPage\1.0.0.0\DocumentFormat.OpenXml.dll",
-"C:\Program Files\WindowsPowerShell\Modules\ConvertWordDocument2AspxPage\1.0.0.0\Microsoft.SharePoint.Client.dll",
-"C:\Program Files\WindowsPowerShell\Modules\ConvertWordDocument2AspxPage\1.0.0.0\Microsoft.SharePoint.Client.Runtime.dll",
-"C:\Program Files\WindowsPowerShell\Modules\ConvertWordDocument2AspxPage\1.0.0.0\OfficeDevPnP.Core.dll",
-"C:\Program Files\WindowsPowerShell\Modules\ConvertWordDocument2AspxPage\1.0.0.0\OpenXmlPowerTools.dll",
-"C:\Program Files\WindowsPowerShell\Modules\ConvertWordDocument2AspxPage\1.0.0.0\System.Xml.Linq.dll",
-"C:\Program Files\WindowsPowerShell\Modules\ConvertWordDocument2AspxPage\1.0.0.0\System.Drawing.dll",
-"C:\Program Files\WindowsPowerShell\Modules\ConvertWordDocument2AspxPage\1.0.0.0\System.XML.dll",
-"C:\Program Files\WindowsPowerShell\Modules\ConvertWordDocument2AspxPage\1.0.0.0\Newtonsoft.Json.dll",
-"C:\Program Files\WindowsPowerShell\Modules\ConvertWordDocument2AspxPage\1.0.0.0\AngleSharp.dll"
+"C:\Program Files\WindowsPowerShell\Modules\ConvertWordDocumentToModernPage\1.0.0.0\DocumentFormat.OpenXml.dll",
+"C:\Program Files\WindowsPowerShell\Modules\ConvertWordDocumentToModernPage\1.0.0.0\Microsoft.SharePoint.Client.dll",
+"C:\Program Files\WindowsPowerShell\Modules\ConvertWordDocumentToModernPage\1.0.0.0\Microsoft.SharePoint.Client.Runtime.dll",
+"C:\Program Files\WindowsPowerShell\Modules\ConvertWordDocumentToModernPage\1.0.0.0\OfficeDevPnP.Core.dll",
+"C:\Program Files\WindowsPowerShell\Modules\ConvertWordDocumentToModernPage\1.0.0.0\OpenXmlPowerTools.dll",
+"C:\Program Files\WindowsPowerShell\Modules\ConvertWordDocumentToModernPage\1.0.0.0\System.Xml.Linq.dll",
+"C:\Program Files\WindowsPowerShell\Modules\ConvertWordDocumentToModernPage\1.0.0.0\System.Drawing.dll",
+"C:\Program Files\WindowsPowerShell\Modules\ConvertWordDocumentToModernPage\1.0.0.0\System.XML.dll",
+"C:\Program Files\WindowsPowerShell\Modules\ConvertWordDocumentToModernPage\1.0.0.0\Newtonsoft.Json.dll",
+"C:\Program Files\WindowsPowerShell\Modules\ConvertWordDocumentToModernPage\1.0.0.0\AngleSharp.dll"
 
 )
 $src=@"
@@ -88,7 +88,7 @@ using System.Net.Mail;
 using DocumentFormat.OpenXml.Packaging;
 using DocumentFormat.OpenXml.Wordprocessing;
 
- public class ConvertWordDocument2AspxPage
+ public class ConvertWordDocumentToModernPage
     {
     
         public static string ConvertDocument(string SiteUrl, string SourceLibrary,  string UserName, string Password, string FileName="")
@@ -375,7 +375,7 @@ using DocumentFormat.OpenXml.Wordprocessing;
 
  Add-Type -ReferencedAssemblies $asset -TypeDefinition $src
  
- [ConvertWordDocument2AspxPage]::ConvertDocument($SiteUrl,$TargetLibrary,$UserName,$Password,$FileName)
+ [ConvertWordDocumentToModernPage]::ConvertDocument($SiteUrl,$TargetLibrary,$UserName,$Password,$FileName)
 
  }
 
