@@ -45,3 +45,5 @@ Import-Module (Resolve-Path('ConvertWordDocumentToModernPage'))
    dir "C:\Program Files\WindowsPowerShell\Modules\ConvertWordDocumentToModernPage\1.0.0.0" | Unblock-File
 3. Close and re-open the PowerShell console then try again
 
+# Caveat
+You will lose the formatting if you edit the page directly. if you need to update the page, make the changes in the word document and run the command again. The best way is to automate publishing the changes with the command. 
