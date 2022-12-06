@@ -33,4 +33,12 @@ Note: if you don't have access to Program Files. Copy the folder i.e. ConvertWor
 Open PowerShell command and change the directory to where you have the ConvertWordDocument2AspxPage  and import the module using the command below:
 Import-Module (Resolve-Path('ConvertWordDocumentToModernPage'))
 
-**If you receive Unable to load one or more of the requested types error, please ignore.
+# Possible error you might receive
+1. If you receive Unable to load one or more of the requested types error, please ignore.
+
+2. ConvertWordDocumentToModernPage.psm1 is not digitally signed. You cannot run this script on the current system. Run the two commands below (note if you put the ConertWordDocumentToModernPage in a different directory, change the path to that directory)
+  
+  . Unblock-File -Path "C:\Program Files\WindowsPowerShell\Modules\ConvertWordDocumentToModernPage\ConvertWordDocumentToModernPage.psm1"
+
+  . dir "C:\Program Files\WindowsPowerShell\Modules\ConvertWordDocumentToModernPage\1.0.0.0" | Unblock-File
+
