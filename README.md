@@ -49,4 +49,4 @@ Import-Module (Resolve-Path('ConvertWordDocumentToModernPage'))
 3. Close and re-open the PowerShell console then try again
 
 # Caveat
-You will lose the formatting if you edit the page directly. if you need to update the page, make the changes in the word document and run the command again. The best way is to automate publishing the changes with the command. 
+You will lose the formatting if you edit the page directly. if you need to update the page, make the changes in the word document and run the command again. The best way is to automate publishing the changes using the command. 
