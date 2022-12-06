@@ -1,5 +1,5 @@
 # Description
-  Creates SharePoint modern pages from word documents (docx). This function let you convert a single or multiple word documents to modern pages with a single line of command. This tool is for you if you have wanted an easy way to create table of content (TOC) in modern pages without installing a 3rd party web part or wanted to include Back to top functionality in your page. Just add TOC or back to top tag to your word document and run the command. It will create the page with the table of content along with anchor link to each heading/section.
+  This PowerShell module creates SharePoint modern pages from word documents (docx). This function let you convert a single or multiple word documents to modern pages with a single line of command. This tool is for you if you have wanted an easy way to create table of content (TOC) in modern pages without installing a 3rd party web part, include Back to top functionality in your page or convert your existing documents to web pages e.g. policy documents. Just add TOC or back to top tag to your word document and run the command. It will create the page with the table of content along with anchor link to each heading/section.
   ![image](https://user-images.githubusercontent.com/35005799/205815181-1fbbd405-ec81-4ed4-aec9-5350e3d1da06.png)
 
   
