@@ -36,9 +36,9 @@ Import-Module (Resolve-Path('ConvertWordDocumentToModernPage'))
 # Possible errors you might receive
 1. If you receive "Unable to load one or more of the requested types" error, please ignore.
 
-2. You might also receive "ConvertWordDocumentToModernPage.psm1 is not digitally signed. You cannot run this script on the current system." This is beacuse you have RemoteSigned policy enabled that prevents you from running scripts that are downloaded from the internet unless they are digitally signed. Run the two commands below to unblock the donwloads (note if you put the ConertWordDocumentToModernPage in a different directory, change the path to that directory):
+2. You might also receive "ConvertWordDocumentToModernPage.psm1 is not digitally signed. You cannot run this script on the current system." This is beacuse you have RemoteSigned policy enabled that prevents you from running scripts that are downloaded from the internet unless they are digitally signed. Start PowerShell as an Administrator and run the two commands below to unblock the downloads (note if you put the ConertWordDocumentToModernPage in a different directory, change the path to that directory):
   
    Unblock-File -Path "C:\Program Files\WindowsPowerShell\Modules\ConvertWordDocumentToModernPage\ConvertWordDocumentToModernPage.psm1"
 
    dir "C:\Program Files\WindowsPowerShell\Modules\ConvertWordDocumentToModernPage\1.0.0.0" | Unblock-File
-
+3. Close and re-open the PowerShell console and try again
