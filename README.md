@@ -26,7 +26,7 @@ UserName - Username or email address of a user who has full control on the site 
 
 Password - Password of the account used for authentication.
 
-FieName - Optional: specify a filename for a word document to convert. If you do not use FileName parameter modern pages will be created for all word documents (docx) in the library. 
+FieName - Optional: specify a filename for a word document to convert. If you do not use the FileName parameter, modern pages will be created for all word documents (docx) in the library. 
 
 # Example
   To convert a single word document: ConvertWordDocumentToModernPage -SiteUrl "https://domain.sharepoint.com/sites/dev" -TargetLibrary "SourceLibrary" -UserName "UserName@domain.com" -Password "UserPassword" -FileName "ConvertWord.docx"
