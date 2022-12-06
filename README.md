@@ -1,5 +1,5 @@
 # Description
-  Convert word documents to SharePoint modern pages. This function let you convert a single or multiple word documents to modern pages with a single line of command.
+  Creates SharePoint modern pages from word documents (docx). This function let you convert a single or multiple word documents to modern pages with a single line of command.
   
 # Import module
 To get started, download or clone the repository. If you download it as a zip file, unzip it and copy the folder named ConvertWordDocumentToModernPage along with its content to Modules folder inside WindowsPowerShell directory in Program Files i.e. C:\Program Files\WindowsPowerShell\Modules.  Then follow the steps below to import the module and run the command.
@@ -21,7 +21,7 @@ UserName - Username or email address of a user who has full control on the site 
 
 Password - Password of the account used for authentication.
 
-FieName - Optional: specify a filename for a word document to convert. If you do not use FileName parameter all word documents in the library will be converted. 
+FieName - Optional: specify a filename for a word document to convert. If you do not use FileName parameter modern pages will be created for all word documents (docx) in the library. 
 
 # Example
   To convert a single word document: ConvertWordDocumentToModernPage -SiteUrl "https://domain.sharepoint.com/sites/dev" -TargetLibrary "SourceLibrary" -UserName "UserName@domain.com" -Password "UserPassword" -FileName "ConvertWord.docx"
