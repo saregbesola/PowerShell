@@ -41,4 +41,4 @@ Import-Module (Resolve-Path('ConvertWordDocumentToModernPage'))
    Unblock-File -Path "C:\Program Files\WindowsPowerShell\Modules\ConvertWordDocumentToModernPage\ConvertWordDocumentToModernPage.psm1"
 
    dir "C:\Program Files\WindowsPowerShell\Modules\ConvertWordDocumentToModernPage\1.0.0.0" | Unblock-File
-3. Close and re-open the PowerShell console and try again
+3. Close and re-open the PowerShell console then try again
