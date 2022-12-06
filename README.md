@@ -42,3 +42,4 @@ Import-Module (Resolve-Path('ConvertWordDocumentToModernPage'))
 
    dir "C:\Program Files\WindowsPowerShell\Modules\ConvertWordDocumentToModernPage\1.0.0.0" | Unblock-File
 3. Close and re-open the PowerShell console then try again
+![image](https://user-images.githubusercontent.com/35005799/205806377-0cf66f8a-1518-4ade-b5d8-91b5fb47d199.png)
