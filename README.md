@@ -1,5 +1,7 @@
 # Description
   Creates SharePoint modern pages from word documents (docx). This function let you convert a single or multiple word documents to modern pages with a single line of command. This tool is for you if you have wanted an easy way to create table of content (TOC) in modern pages without installing a 3rd party web part. Just add TOC to your word document and run the command. It will create the page with the table of content along with anchor link to each heading/section.
+  ![image](https://user-images.githubusercontent.com/35005799/205815181-1fbbd405-ec81-4ed4-aec9-5350e3d1da06.png)
+
   
 # Import module
 To get started, download or clone the repository. If you download it as a zip file, unzip it and copy the folder named ConvertWordDocumentToModernPage along with its content to Modules folder inside WindowsPowerShell directory in Program Files i.e. C:\Program Files\WindowsPowerShell\Modules.  Then follow the steps below to import the module and run the command.
